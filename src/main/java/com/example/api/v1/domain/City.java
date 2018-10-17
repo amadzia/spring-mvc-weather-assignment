@@ -15,7 +15,4 @@ public class City {
     public Coord coord;
     public String country;
 
-    public City(String name) {
-        this.name = name;
-    }
 }
