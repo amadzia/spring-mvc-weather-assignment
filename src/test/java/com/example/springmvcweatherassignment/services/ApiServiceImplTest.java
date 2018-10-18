@@ -21,6 +21,6 @@ public class ApiServiceImplTest {
 
         WeatherForecast weatherForecast = apiService.getWeatherForecast("London", "UK");
 
-        assertEquals(new WeatherForecast("London", "UK", "274,74", "966,21", "88,00"), weatherForecast);
+        assertEquals(new WeatherForecast("London", "UK", 274.74, 966.21, 88.78), weatherForecast);
     }
 }

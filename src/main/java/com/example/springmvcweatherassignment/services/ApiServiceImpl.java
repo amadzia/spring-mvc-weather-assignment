@@ -8,7 +8,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -64,9 +63,9 @@ public class ApiServiceImpl implements ApiService {
 
         int temperaturesSize = (int) temperatures.stream().filter(Objects::nonNull).count();
 
-        Double averageTemperature = temperaturesSum / temperaturesSize;
+        Double averageTemperature = (double) Math.round(temperaturesSum / temperaturesSize * 100) / 100;
 
-        weatherForecast.setAverageTemperature(new DecimalFormat("0.00").format(averageTemperature));
+        weatherForecast.setAverageTemperature(averageTemperature);
 
     }
 
@@ -82,9 +81,9 @@ public class ApiServiceImpl implements ApiService {
 
         int humiditiesSize = (int) humidities.stream().filter(Objects::nonNull).count();
 
-        Double averageHumidity = (double) (humiditySum / humiditiesSize);
+        double averageHumidity = (double) Math.round((double) humiditySum / humiditiesSize * 100) / 100;
 
-        weatherForecast.setAverageHumidity(new DecimalFormat("0.00").format(averageHumidity));
+        weatherForecast.setAverageHumidity(averageHumidity);
 
     }
 
@@ -100,8 +99,8 @@ public class ApiServiceImpl implements ApiService {
 
         int pressuresSize = (int) pressures.stream().filter(Objects::nonNull).count();
 
-        Double averagePressure = pressureSum / pressuresSize;
+        Double averagePressure = (double) Math.round(pressureSum / pressuresSize * 100) / 100;
 
-        weatherForecast.setAveragePressure(new DecimalFormat("0.00").format(averagePressure));
+        weatherForecast.setAveragePressure(averagePressure);
     }
 }

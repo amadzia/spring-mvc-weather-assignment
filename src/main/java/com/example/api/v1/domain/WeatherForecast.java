@@ -11,7 +11,7 @@ public class WeatherForecast {
 
     private String cityName;
     private String countryCode;
-    private String averageTemperature;
-    private String averagePressure;
-    private String averageHumidity;
+    private Double averageTemperature;
+    private Double averagePressure;
+    private Double averageHumidity;
 }
