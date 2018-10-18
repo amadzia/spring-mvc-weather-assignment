@@ -29,13 +29,6 @@ public class WeatherController {
     @PostMapping(value = "/weatherforecast", produces = MediaType.APPLICATION_JSON_VALUE)
     public WeatherForecast formPost(@RequestParam String city, @RequestParam String countryCode, Model model) {
 
-// HttpServletRequest request
-// WeatherForecast weatherForecast = new WeatherForecast();
-//
-//        Map<String, String[]> map = request.getParameterMap();
-//        weatherForecast.setCityName(String.valueOf(map.get("city")));
-//        weatherForecast.setCountryCode(String.valueOf(map.get("countryCode")));
-
         model.addAttribute("weatherforecast", apiService.getWeatherForecast(city, countryCode));
 
         return apiService.getWeatherForecast(city, countryCode);
