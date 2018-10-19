@@ -2,7 +2,9 @@ package com.example.springmvcweatherassignment.services;
 
 import com.example.api.v1.domain.WeatherData;
 import com.example.api.v1.domain.WeatherForecast;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
@@ -13,6 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
+@Slf4j
 public class ApiServiceImpl implements ApiService {
 
     private RestTemplate restTemplate;
@@ -28,7 +31,10 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
+    @Cacheable(value = "weather")
     public WeatherForecast getWeatherForecast(String cityName, String countryCode) {
+
+        log.info("Retrieving weather forecast without cache");
 
         UriComponents uriComponent = UriComponentsBuilder
                 .fromUriString(api_url)
