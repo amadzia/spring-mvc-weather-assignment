@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd"
-         updateCheck="true"
-         monitoring="autodetect"
-         dynamicConfig="true">
+         xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd">
 
     <cache name="weather"
            maxElementsInMemory="100"
-           eternal="false"
            overflowToDisk="false"
-           timeToLiveSeconds="10"
+           timeToLiveSeconds="3600"
            timeToIdleSeconds="0"
-           memoryStoreEvictionPolicy="LFU"
-           transactionalMode="off">
+           memoryStoreEvictionPolicy="LFU">
     </cache>
 
 </ehcache>
